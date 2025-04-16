@@ -17,8 +17,8 @@ export default function SearchRepositories() {
         Array.from({ length: 3 }).map((_, index) => (
           <Skeleton key={index} className="col-span-1 h-32 w-full" />
         ))}
-      {data &&
-        data.items.map((item) => (
+      {data?.data &&
+        data.data.items.map((item) => (
           <RepositoryCard key={item.id} repository={item} />
         ))}
     </div>
