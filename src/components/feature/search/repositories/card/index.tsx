@@ -40,14 +40,13 @@ export default function RepositoryCard({ repository }: RepositoryCardProps) {
         </div>
 
         {repository.description && (
-          <p className="line-clamp-2 text-gray-600">
-            <BlurText
-              text={repository.description}
-              delay={70}
-              animateBy="words"
-              direction="bottom"
-            />
-          </p>
+          <BlurText
+            text={repository.description}
+            delay={70}
+            animateBy="words"
+            direction="bottom"
+            className="line-clamp-2 text-gray-600"
+          />
         )}
 
         {repository.topics && (
