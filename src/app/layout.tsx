@@ -31,7 +31,9 @@ export default function RootLayout({
       >
         <LoadingIndicator />
         <Header />
-        {children}
+        <main className="mx-auto max-w-screen-lg min-w-md p-4 md:p-12">
+          {children}
+        </main>
       </body>
     </html>
   );
