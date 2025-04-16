@@ -4,9 +4,12 @@ import { Card } from '@/components/_ui/card';
 import { RestEndpointMethodTypes } from '@octokit/rest';
 import { Code, GitBranch, SquareArrowOutUpRight, Star } from 'lucide-react';
 import Link from 'next/link';
-type RepositoryCardProps = {
-  repository: RestEndpointMethodTypes['search']['repos']['response']['data']['items'][0];
-};
+
+type RepositoryCardProps = Readonly<{
+  repository: Readonly<
+    RestEndpointMethodTypes['search']['repos']['response']['data']['items'][0]
+  >;
+}>;
 
 export default function RepositoryCard({ repository }: RepositoryCardProps) {
   return (
@@ -14,7 +17,7 @@ export default function RepositoryCard({ repository }: RepositoryCardProps) {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex flex-nowrap items-center gap-2">
-            <Link href={`/${repository.owner?.id}/${repository.name}`}>
+            <Link href={`/${repository.owner?.login}/${repository.name}`}>
               <h3 className="truncate text-xl font-semibold text-gray-900">
                 <BlurText
                   text={repository.name}
