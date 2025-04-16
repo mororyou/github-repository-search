@@ -37,5 +37,11 @@ jobs:
       - name: Format Check
         run: pnpm format
 
+      - name: Vitest Check
+        run: pnpm test
+
+      - name: Run tests
+        run: npx vitest run --coverage
+
       - name: Build Check
         run: pnpm build
