@@ -4,7 +4,6 @@ import { Card } from '@/components/_ui/card';
 import { Link } from '@/components/common/link';
 import { RestEndpointMethodTypes } from '@octokit/rest';
 import { Code, GitBranch, SquareArrowOutUpRight, Star } from 'lucide-react';
-import Link from 'next/link';
 
 type RepositoryCardProps = Readonly<{
   repository: Readonly<
