@@ -1,8 +1,8 @@
 import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
 import path from 'path';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig, UserConfig } from 'vitest/config';
-
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
   resolve: {
@@ -11,6 +11,7 @@ export default defineConfig({
     },
   },
   test: {
+    env: dotenv.config({ path: '.env.test' }).parsed,
     globals: true,
     environment: 'jsdom',
     coverage: {
