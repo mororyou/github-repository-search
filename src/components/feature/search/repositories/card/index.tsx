@@ -1,9 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/_ui/avatar';
 import BlurText from '@/components/_ui/BlurText';
 import { Card } from '@/components/_ui/card';
+import { Link } from '@/components/common/link';
 import { RestEndpointMethodTypes } from '@octokit/rest';
 import { Code, GitBranch, SquareArrowOutUpRight, Star } from 'lucide-react';
-import Link from 'next/link';
+
 type RepositoryCardProps = {
   repository: RestEndpointMethodTypes['search']['repos']['response']['data']['items'][0];
 };
