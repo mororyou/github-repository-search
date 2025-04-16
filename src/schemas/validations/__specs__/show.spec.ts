@@ -21,18 +21,7 @@ describe('zShowRepositorySchema', () => {
     });
 
     expect(result.error?.errors[0].message).toBe(
-      'リポジトリの所有者は、半角英数字で入力してください',
-    );
-  });
-
-  it('ownerが半角英数字でない場合、エラーを返す', ({ expect }) => {
-    const result = zShowRepositorySchema.safeParse({
-      owner: 'テスト',
-      repositoryName: 'test1234',
-    });
-
-    expect(result.error?.errors[0].message).toBe(
-      'リポジトリの所有者は、半角英数字で入力してください',
+      'リポジトリの所有者を入力してください',
     );
   });
 
@@ -43,17 +32,7 @@ describe('zShowRepositorySchema', () => {
     });
 
     expect(result.error?.errors[0].message).toBe(
-      'リポジトリ名は、半角英数字で入力してください',
-    );
-  });
-  it('repositoryNameが半角英数字でない場合、エラーを返す', ({ expect }) => {
-    const result = zShowRepositorySchema.safeParse({
-      owner: 'test1234',
-      repositoryName: 'テスト',
-    });
-
-    expect(result.error?.errors[0].message).toBe(
-      'リポジトリ名は、半角英数字で入力してください',
+      'リポジトリ名を入力してください',
     );
   });
 });

@@ -1,5 +1,6 @@
 'use server';
 
+import { perPage } from '@/queries/repository';
 import { ActionResult } from '@/schemas/types/result';
 import { zSearchRepositorySchema } from '@/schemas/validations/search';
 import { zShowRepositorySchema } from '@/schemas/validations/show';
@@ -31,6 +32,7 @@ export const getRepositories = async ({
       page,
       sort: 'stars',
       order: 'desc',
+      per_page: perPage,
     });
 
     return {
