@@ -1,11 +1,15 @@
 'use client';
 
-import { Skeleton } from '@/components/_ui/skeleton';
+import { Button } from '@/components/_ui/button';
 import { repositoriesAtom } from '@/queries/repository';
 import { useAtom } from 'jotai';
+import { Loader2 } from 'lucide-react';
 import RepositoryCard from './card';
+import Skeletons from './skeltons';
+
 export default function SearchRepositories() {
-  const [{ data, isPending, isError }] = useAtom(repositoriesAtom);
+  const [{ data, isError, isFetching, fetchNextPage, hasNextPage }] =
+    useAtom(repositoriesAtom);
 
   if (isError) {
     return <div>Error</div>;
@@ -13,14 +17,20 @@ export default function SearchRepositories() {
 
   return (
     <div className="grid h-full w-full grid-cols-1 gap-4">
-      {isPending &&
-        Array.from({ length: 3 }).map((_, index) => (
-          <Skeleton key={index} className="col-span-1 h-32 w-full" />
-        ))}
-      {data?.data &&
-        data.data.items.map((item) => (
+      {data?.pages.map((page) =>
+        page.data?.items.map((item) => (
           <RepositoryCard key={item.id} repository={item} />
-        ))}
+        )),
+      )}
+
+      {isFetching && <Skeletons count={3} />}
+
+      {hasNextPage && (
+        <Button onClick={() => fetchNextPage()} disabled={isFetching}>
+          {isFetching && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          もっと見る
+        </Button>
+      )}
     </div>
   );
 }

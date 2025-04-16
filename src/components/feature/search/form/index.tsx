@@ -4,7 +4,7 @@ import { Button } from '@/components/_ui/button';
 import { Form, FormField } from '@/components/_ui/form';
 import InputFormControl from '@/components/common/form/FormControl/Input';
 import { FormError } from '@/components/common/form/FormError';
-import { repositoriesAtom } from '@/queries/repository';
+import { keywordAtom } from '@/queries/repository';
 import {
   SearchRepositorySchema,
   zSearchRepositorySchema,
@@ -18,19 +18,20 @@ import { useForm } from 'react-hook-form';
 export default function SearchRepositoryForm() {
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
-  const [{ mutate }] = useAtom(repositoriesAtom);
-
+  const [keyword, setKeyword] = useAtom(keywordAtom);
   const form = useForm<SearchRepositorySchema>({
     resolver: zodResolver(zSearchRepositorySchema),
     defaultValues: {
-      repositoryName: '',
+      repositoryName: keyword,
     },
+    mode: 'onChange',
+    reValidateMode: 'onChange',
   });
 
   const onSubmit = (data: SearchRepositorySchema) => {
     setError(null);
     startTransition(() => {
-      mutate({ repositoryName: data.repositoryName, page: 1 });
+      setKeyword(data.repositoryName);
     });
   };
 
