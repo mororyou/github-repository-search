@@ -17,8 +17,8 @@ interface BlurTextProps {
   direction?: 'top' | 'bottom';
   threshold?: number;
   rootMargin?: string;
-  animationFrom?: Record<string, any>;
-  animationTo?: Record<string, any>[];
+  animationFrom?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  animationTo?: Record<string, any>[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   easing?: (t: number) => number | string;
   onAnimationComplete?: () => void;
 }
@@ -42,6 +42,7 @@ const BlurText: React.FC<BlurTextProps> = ({
   const animatedCount = useRef(0);
 
   // Default animations based on direction
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const defaultFrom: Record<string, any> =
     direction === 'top'
       ? {
@@ -55,6 +56,7 @@ const BlurText: React.FC<BlurTextProps> = ({
           transform: 'translate3d(0,50px,0)',
         };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const defaultTo: Record<string, any>[] = [
     {
       filter: 'blur(5px)',
@@ -91,7 +93,7 @@ const BlurText: React.FC<BlurTextProps> = ({
       from: animationFrom || defaultFrom,
       to: inView
         ? async (
-            next: (arg: Record<string, SpringValue<any>>) => Promise<void>,
+            next: (arg: Record<string, SpringValue<any>>) => Promise<void>, // eslint-disable-line @typescript-eslint/no-explicit-any
           ) => {
             for (const step of animationTo || defaultTo) {
               await next(step);
@@ -106,7 +108,7 @@ const BlurText: React.FC<BlurTextProps> = ({
           }
         : animationFrom || defaultFrom,
       delay: i * delay,
-      config: { easing: easing as any },
+      config: { easing: easing as any }, // eslint-disable-line @typescript-eslint/no-explicit-any
     })),
   );
 
