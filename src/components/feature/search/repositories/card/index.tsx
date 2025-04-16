@@ -91,10 +91,13 @@ export default function RepositoryCard({ repository }: RepositoryCardProps) {
           <Avatar className="h-8 w-8">
             <AvatarImage
               src={repository.owner?.avatar_url}
-              alt={repository.owner?.name ?? repository.owner?.login}
+              alt={`${repository.owner?.login ?? '??'}のアバター`}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
             />
             <AvatarFallback>
-              {repository.owner?.login.slice(0, 2)}
+              {repository.owner?.login?.slice(0, 2) || '??'}
             </AvatarFallback>
           </Avatar>
         </div>
