@@ -43,5 +43,11 @@ jobs:
       - name: Run tests
         run: npx vitest run --coverage
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: mororyou/github-repository-search
+
       - name: Build Check
         run: pnpm build
