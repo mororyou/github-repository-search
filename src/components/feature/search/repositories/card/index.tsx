@@ -2,13 +2,11 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/_ui/avatar';
 import BlurText from '@/components/_ui/BlurText';
 import { Card } from '@/components/_ui/card';
 import { Link } from '@/components/common/link';
-import { RestEndpointMethodTypes } from '@octokit/rest';
+import { type SearchRepositoryResultItemSchema } from '@/schemas/validations/search';
 import { Code, GitBranch, SquareArrowOutUpRight, Star } from 'lucide-react';
 
 type RepositoryCardProps = Readonly<{
-  repository: Readonly<
-    RestEndpointMethodTypes['search']['repos']['response']['data']['items'][0]
-  >;
+  repository: Readonly<SearchRepositoryResultItemSchema>;
 }>;
 
 export default function RepositoryCard({ repository }: RepositoryCardProps) {

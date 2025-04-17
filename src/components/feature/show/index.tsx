@@ -1,13 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/_ui/avatar';
 import BlurText from '@/components/_ui/BlurText';
-import { RestEndpointMethodTypes } from '@octokit/rest';
+import { ShowRepositoryResultSchema } from '@/schemas/validations/show';
 import { CircleDot, Eye, GitBranch, Star } from 'lucide-react';
 import ResultCard from './result-card';
 
 type ShowPageContainerProps = Readonly<{
-  repository: Readonly<
-    RestEndpointMethodTypes['repos']['get']['response']['data']
-  >;
+  repository: Readonly<ShowRepositoryResultSchema>;
 }>;
 
 export default function ShowPageContainer({

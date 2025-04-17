@@ -2,9 +2,17 @@
 
 import { perPage } from '@/queries/repository';
 import { ActionResult } from '@/schemas/types/result';
-import { zSearchRepositorySchema } from '@/schemas/validations/search';
-import { zShowRepositorySchema } from '@/schemas/validations/show';
-import { Octokit, RestEndpointMethodTypes } from '@octokit/rest';
+import {
+  SearchRepositoryResultsSchema,
+  zSearchRepositoryResultsSchema,
+  zSearchRepositorySchema,
+} from '@/schemas/validations/search';
+import {
+  ShowRepositoryResultSchema,
+  zShowRepositoryResultSchema,
+  zShowRepositorySchema,
+} from '@/schemas/validations/show';
+import { Octokit } from '@octokit/rest';
 
 type GetRepositoriesParams = {
   repositoryName: string;
@@ -17,7 +25,7 @@ export const getRepositories = async ({
   repositoryName,
   page = 1,
 }: GetRepositoriesParams): Promise<
-  ActionResult<RestEndpointMethodTypes['search']['repos']['response']['data']>
+  ActionResult<SearchRepositoryResultsSchema>
 > => {
   try {
     const isValid = zSearchRepositorySchema.safeParse({
@@ -35,9 +43,11 @@ export const getRepositories = async ({
       per_page: perPage,
     });
 
+    const parsedData = zSearchRepositoryResultsSchema.parse(data);
+
     return {
       isSuccess: true,
-      data,
+      data: parsedData,
     };
   } catch (error) {
     return {
@@ -55,9 +65,7 @@ type GetRepositoryParams = {
 export const getRepository = async ({
   owner,
   repositoryName,
-}: GetRepositoryParams): Promise<
-  ActionResult<RestEndpointMethodTypes['repos']['get']['response']['data']>
-> => {
+}: GetRepositoryParams): Promise<ActionResult<ShowRepositoryResultSchema>> => {
   try {
     const isValid = zShowRepositorySchema.safeParse({
       owner,
@@ -73,9 +81,11 @@ export const getRepository = async ({
       repo: repositoryName,
     });
 
+    const parsedData = zShowRepositoryResultSchema.parse(data);
+
     return {
       isSuccess: true,
-      data,
+      data: parsedData,
     };
   } catch (error: unknown) {
     return {
