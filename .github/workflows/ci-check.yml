@@ -41,7 +41,7 @@ jobs:
         run: pnpm test
 
       - name: Run Coverage
-        run: npx vitest --reporter=junit --outputFile=test-report.junit.xml
+        run: pnpm test:coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
@@ -50,7 +50,7 @@ jobs:
           slug: mororyou/github-repository-search
 
       - name: Test Report
-        run: pnpm test:report
+        run: npx vitest --reporter=junit --outputFile=test-report.junit.xml
 
       - name: Upload test results to Codecov
         if: ${{ !cancelled() }}
