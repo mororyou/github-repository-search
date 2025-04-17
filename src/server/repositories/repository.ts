@@ -1,26 +1,22 @@
 'use server';
 
+import { octokit } from '@/lib/octokit';
 import { perPage } from '@/queries/repository';
 import { ActionResult } from '@/schemas/types/result';
 import {
   SearchRepositoryResultsSchema,
+  ShowRepositoryResultSchema,
   zSearchRepositoryResultsSchema,
   zSearchRepositorySchema,
-} from '@/schemas/validations/search';
-import {
-  ShowRepositoryResultSchema,
   zShowRepositoryResultSchema,
   zShowRepositorySchema,
-} from '@/schemas/validations/show';
+} from '@/schemas/validations';
 import { handleError } from '@/utils/error';
-import { Octokit } from '@octokit/rest';
 
 type GetRepositoriesParams = {
   repositoryName: string;
   page?: number;
 };
-
-const octokit = new Octokit();
 
 export const getRepositories = async ({
   repositoryName,
@@ -36,7 +32,7 @@ export const getRepositories = async ({
     if (!isValid.success) {
       throw new Error('Invalid repository name');
     }
-    const { data } = await octokit.rest.search.repos({
+    const { data } = await octokit.search.repos({
       q: repositoryName,
       page,
       sort: 'stars',
@@ -74,7 +70,7 @@ export const getRepository = async ({
       throw new Error('Invalid repository name');
     }
 
-    const { data } = await octokit.rest.repos.get({
+    const { data } = await octokit.repos.get({
       owner,
       repo: repositoryName,
     });
