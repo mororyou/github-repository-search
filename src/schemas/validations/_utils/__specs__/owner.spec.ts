@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import { zResultItemOwnerSchema } from '../owner';
 
-describe('zResultItemOwnerSchema tests', () => {
+describe('zResultItemOwnerSchema validation tests', () => {
   it('正常な値の場合', ({ expect }) => {
     expect(() =>
       zResultItemOwnerSchema.parse({
