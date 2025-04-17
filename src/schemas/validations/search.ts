@@ -31,7 +31,7 @@ export const zSearchRepositoryResultItemSchema = z.object(
     }),
     forks_count: z.number({ message: 'forks_countは数値で入力してください' }),
     topics: z
-      .array(z.string({ message: 'topicsは配列で入力してください' }))
+      .array(z.string(), { message: 'topicsは配列で入力してください' })
       .optional(),
     language: z
       .string({ message: 'languageは文字列で入力してください' })
