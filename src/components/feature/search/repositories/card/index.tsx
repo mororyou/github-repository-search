@@ -25,9 +25,13 @@ export default function RepositoryCard({ repository }: RepositoryCardProps) {
                 />
               </h3>
             </Link>
-            <Link href={repository.html_url}>
+            <a
+              href={repository.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <SquareArrowOutUpRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
           <div className="flex items-center space-x-2 text-gray-500">
             <Star className="h-4 w-4" />
