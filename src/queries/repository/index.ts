@@ -4,7 +4,7 @@ import { atomWithInfiniteQuery } from 'jotai-tanstack-query';
 
 export const keywordAtom = atom<string>('');
 
-export const perPage = 3;
+export const perPage = 10;
 
 export const repositoriesAtom = atomWithInfiniteQuery((get) => {
   const keyword = get(keywordAtom);
