@@ -61,3 +61,7 @@ jobs:
 
       - name: Build Check
         run: pnpm build
+        env:
+          NODE_ENV: production
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+
