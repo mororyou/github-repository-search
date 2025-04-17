@@ -5,9 +5,10 @@ interface LinkProps extends NextLinkProps {
   children: React.ReactNode;
   className?: string;
 }
+
 export function Link({ children, ...props }: LinkProps) {
   return (
-    <NextLink {...props}>
+    <NextLink {...props} prefetch={false}>
       {children}
       <LoadingIndicator />
     </NextLink>

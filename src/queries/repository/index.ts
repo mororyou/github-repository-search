@@ -1,6 +1,7 @@
 import { getRepositories } from '@/server/repositories/repository';
 import { atom } from 'jotai';
 import { atomWithInfiniteQuery } from 'jotai-tanstack-query';
+import { repositoryKeys } from './keys';
 
 export const keywordAtom = atom<string>('');
 
@@ -9,7 +10,7 @@ export const perPage = 10;
 export const repositoriesAtom = atomWithInfiniteQuery((get) => {
   const keyword = get(keywordAtom);
   return {
-    queryKey: ['repositories', keyword],
+    queryKey: repositoryKeys.search(keyword),
     queryFn: async ({ pageParam = 1 }) => {
       return await getRepositories({
         repositoryName: keyword,
@@ -26,7 +27,7 @@ export const repositoriesAtom = atomWithInfiniteQuery((get) => {
       return (lastPageParam as number) + 1;
     },
     initialPageParam: 1,
-    enabled: !!keyword, // キーワードの長さが0より大きい場合のみ有効化
-    staleTime: 0, // キャッシュを無効化
+    enabled: !!keyword,
+    staleTime: 0,
   };
 });
