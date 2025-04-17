@@ -12,11 +12,12 @@ import {
   zShowRepositoryResultSchema,
   zShowRepositorySchema,
 } from '@/schemas/validations/show';
+import { handleError } from '@/utils/error';
 import { Octokit } from '@octokit/rest';
 
 type GetRepositoriesParams = {
   repositoryName: string;
-  page: number;
+  page?: number;
 };
 
 const octokit = new Octokit();
@@ -50,10 +51,7 @@ export const getRepositories = async ({
       data: parsedData,
     };
   } catch (error) {
-    return {
-      isSuccess: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-    };
+    return handleError(error);
   }
 };
 
@@ -87,10 +85,7 @@ export const getRepository = async ({
       isSuccess: true,
       data: parsedData,
     };
-  } catch (error: unknown) {
-    return {
-      isSuccess: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-    };
+  } catch (error) {
+    return handleError(error);
   }
 };
