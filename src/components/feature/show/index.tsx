@@ -12,7 +12,7 @@ export default function ShowPageContainer({
   repository,
 }: ShowPageContainerProps) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4" data-testid="show-page-container">
       <div className="flex items-center gap-4">
         <Avatar className="col-span-1 row-span-2 h-16 w-16">
           <AvatarImage src={repository.owner.avatar_url} />
