@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import react from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
 import path from 'path';

@@ -22,7 +22,7 @@ describe('search validation tests', () => {
       });
 
       expect(result.error?.errors[0].message).toBe(
-        'レポジトリ名を入力してください',
+        'リポジトリ名を入力してください',
       );
     });
     it('100文字以上の場合、エラーを返す', ({ expect }) => {
@@ -31,7 +31,7 @@ describe('search validation tests', () => {
       });
 
       expect(result.error?.errors[0].message).toBe(
-        'レポジトリ名は100文字以内で入力してください',
+        'リポジトリ名は100文字以内で入力してください',
       );
     });
 
@@ -47,13 +47,13 @@ describe('search validation tests', () => {
 
     it('nullの場合、エラーを返す', ({ expect }) => {
       expect(() => zSearchRepositorySchema.parse(null)).toThrowError(
-        'レポジトリ名を入力してください',
+        'リポジトリ名を入力してください',
       );
     });
 
     it('undefinedの場合、エラーを返す', ({ expect }) => {
       expect(() => zSearchRepositorySchema.parse(undefined)).toThrowError(
-        'レポジトリ名を入力してください',
+        'リポジトリ名を入力してください',
       );
     });
   });

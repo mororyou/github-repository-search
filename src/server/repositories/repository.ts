@@ -30,7 +30,7 @@ export const getRepositories = async ({
     });
 
     if (!isValid.success) {
-      throw new Error('Invalid repository name');
+      throw new Error(isValid.error.errors[0].message);
     }
     const { data } = await octokit.search.repos({
       q: repositoryName,
@@ -67,7 +67,7 @@ export const getRepository = async ({
     });
 
     if (!isValid.success) {
-      throw new Error('Invalid repository name');
+      throw new Error(isValid.error.errors[0].message);
     }
 
     const { data } = await octokit.repos.get({
@@ -77,6 +77,7 @@ export const getRepository = async ({
 
     const parsedData = zShowRepositoryResultSchema.parse(data);
 
+    console.log(parsedData);
     return {
       isSuccess: true,
       data: parsedData,
