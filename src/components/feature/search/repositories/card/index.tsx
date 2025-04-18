@@ -11,7 +11,10 @@ type RepositoryCardProps = Readonly<{
 
 export default function RepositoryCard({ repository }: RepositoryCardProps) {
   return (
-    <Card className="p-6 transition-shadow duration-200 hover:shadow-lg">
+    <Card
+      className="p-6 transition-shadow duration-200 hover:shadow-lg"
+      data-testid="repository-card"
+    >
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex flex-nowrap items-center gap-2">
