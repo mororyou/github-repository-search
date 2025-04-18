@@ -20,14 +20,31 @@ export default defineConfig({
     exclude: [
       '**/node_modules/**',
       'build/**',
+      '.next/**',
       'public/**',
       'src/components/_ui/**',
+      '.storybook/**',
       'src/components/**/**.stories.tsx',
     ],
     coverage: {
       all: true,
       clean: true,
       reporter: ['text', 'html', 'json-summary', 'cobertura'],
+      exclude: [
+        '**/node_modules/**',
+        'build/**',
+        '.next/**',
+        'public/**',
+        'src/components/_ui/**',
+        '.storybook/**',
+        'src/components/**/**.stories.tsx',
+      ],
+    },
+    environmentOptions: {
+      jsdom: {
+        resources: 'usable',
+        runScripts: 'dangerously',
+      },
     },
   },
 });

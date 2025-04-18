@@ -1,5 +1,4 @@
 import Header from '@/components/common/header';
-import LoadingIndicator from '@/components/common/LoadingIndicator';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -29,7 +28,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LoadingIndicator />
         <Header />
         <main className="mx-auto max-w-screen-lg min-w-md p-4 md:p-12">
           {children}
