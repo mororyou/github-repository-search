@@ -1,3 +1,7 @@
 export default function NotFound() {
-  return <div>Not Found</div>;
+  return (
+    <div data-testid="not-found-page">
+      <h1>Not Found</h1>
+    </div>
+  );
 }
