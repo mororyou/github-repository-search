@@ -12,7 +12,7 @@ export default function SearchRepositories() {
     useAtom(repositoriesAtom);
 
   if (isError) {
-    return <div>Error</div>;
+    return <div>エラーが発生しました</div>;
   }
 
   return (
