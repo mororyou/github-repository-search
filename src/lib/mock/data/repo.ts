@@ -1,7 +1,7 @@
 export const repo = {
   success: {
     id: 10270250,
-    name: 'reacta',
+    name: 'react',
     owner: {
       avatar_url: 'https://avatars.githubusercontent.com/u/69631?v=4',
       login: 'facebook',
