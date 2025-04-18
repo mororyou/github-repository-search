@@ -11,7 +11,9 @@
     "format": "prettier --write .",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -25,6 +27,8 @@
     "@react-spring/web": "^9.7.5",
     "@t3-oss/env-nextjs": "^0.12.0",
     "@tanstack/query-core": "^5.74.3",
+    "@tanstack/react-query": "^5.74.4",
+    "@tanstack/react-query-devtools": "^5.74.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
@@ -42,7 +46,15 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/addon-onboarding": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/nextjs": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/test": "^8.6.12",
     "@tailwindcss/postcss": "^4",
+    "@tanstack/eslint-plugin-query": "^5.73.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^20",
@@ -53,13 +65,27 @@
     "@vitest/ui": "^3.1.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.0",
+    "eslint-plugin-storybook": "^0.12.0",
     "jsdom": "^26.1.0",
+    "msw": "^2.7.4",
+    "msw-storybook-addon": "^2.0.4",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "storybook": "^8.6.12",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
