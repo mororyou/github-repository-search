@@ -49,7 +49,7 @@ export default function SearchRepositoryForm() {
               <InputFormControl
                 {...field}
                 type="text"
-                placeholder="レポジトリ名を入力してください"
+                placeholder="リポジトリ名を入力してください"
               />
             )}
           />

@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import react from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -15,15 +16,15 @@ export default defineConfig({
     env: dotenv.config({ path: '.env.test' }).parsed,
     globals: true,
     environment: 'jsdom',
+    exclude: [
+      '**/node_modules/**',
+      'build/**',
+      'public/**',
+      'src/components/_ui/**',
+    ],
     coverage: {
       all: true,
       clean: true,
-      exclude: [
-        '**/node_modules/**',
-        'build/**',
-        'public/**',
-        'src/components/_ui/**',
-      ],
       reporter: ['text', 'html', 'json-summary', 'cobertura'],
     },
   },
