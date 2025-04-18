@@ -22,6 +22,7 @@ export default defineConfig({
       'build/**',
       'public/**',
       'src/components/_ui/**',
+      'src/components/**/**.stories.tsx',
     ],
     coverage: {
       all: true,
