@@ -1,3 +1,4 @@
+import { repo } from '@/lib/mock/data';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Eye, GitBranch, Star } from 'lucide-react';
 import ResultCard from '.';
@@ -26,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: 'スター数',
-    value: 100,
+    value: repo.success.stargazers_count,
     icon: <Star />,
   },
 };
@@ -34,7 +35,7 @@ export const Default: Story = {
 export const StargazersCount: Story = {
   args: {
     title: 'スター数',
-    value: 100,
+    value: repo.success.stargazers_count,
     icon: <Star />,
   },
 };
@@ -42,7 +43,7 @@ export const StargazersCount: Story = {
 export const WatchersCount: Story = {
   args: {
     title: 'ウォッチャー数',
-    value: 100,
+    value: repo.success.watchers_count,
     icon: <Eye />,
   },
 };
@@ -50,7 +51,7 @@ export const WatchersCount: Story = {
 export const ForksCount: Story = {
   args: {
     title: 'フォーク数',
-    value: 100,
+    value: repo.success.forks_count,
     icon: <GitBranch />,
   },
 };
