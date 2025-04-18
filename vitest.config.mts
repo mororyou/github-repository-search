@@ -18,7 +18,12 @@ export default defineConfig({
     coverage: {
       all: true,
       clean: true,
-      exclude: ['**/node_modules/**', 'build/**', 'src/components/_ui/**'],
+      exclude: [
+        '**/node_modules/**',
+        'build/**',
+        'public/**',
+        'src/components/_ui/**',
+      ],
       reporter: ['text', 'html', 'json-summary', 'cobertura'],
     },
   },
