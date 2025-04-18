@@ -77,7 +77,6 @@ export const getRepository = async ({
 
     const parsedData = zShowRepositoryResultSchema.parse(data);
 
-    console.log(parsedData);
     return {
       isSuccess: true,
       data: parsedData,
