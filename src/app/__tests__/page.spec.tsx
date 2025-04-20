@@ -3,7 +3,7 @@ import { describe, it } from 'vitest';
 import Home from '../page';
 
 describe('Home Page', () => {
-  it('should render the search page container', ({ expect }) => {
+  it('ホームページが正常にレンダリングされる', ({ expect }) => {
     render(<Home />);
 
     // SearchPageContainerがレンダリングされていることを確認
