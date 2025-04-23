@@ -1,5 +1,6 @@
 import ShowPageContainer from '@/components/feature/show';
 import { getRepository } from '@/server/repositories/repository';
+import { redirect } from 'next/navigation';
 
 type ShowPageProps = {
   params: Promise<{ owner: string; repositoryName: string }>;
@@ -9,11 +10,7 @@ export default async function ShowPage({ params }: ShowPageProps) {
   const { owner, repositoryName } = await params;
 
   if (!owner || !repositoryName) {
-    return (
-      <div data-testid="path-error">
-        指定されたリポジトリは見つかりませんでした
-      </div>
-    );
+    redirect('/404');
   }
 
   const repository = await getRepository({
@@ -22,11 +19,7 @@ export default async function ShowPage({ params }: ShowPageProps) {
   });
 
   if (!repository.isSuccess || !repository.data) {
-    return (
-      <div data-testid="repository-not-found">
-        指定されたリポジトリは見つかりませんでした
-      </div>
-    );
+    redirect('/404');
   }
 
   return <ShowPageContainer repository={repository.data} />;
