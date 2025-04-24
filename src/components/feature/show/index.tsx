@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/_ui/avatar';
-import BlurText from '@/components/_ui/BlurText';
 import { ShowRepositoryResultSchema } from '@/schemas/validations/show';
 import { CircleDot, Eye, GitBranch, Star } from 'lucide-react';
 import ResultCard from './result-card';
@@ -19,20 +18,8 @@ export default function ShowPageContainer({
           <AvatarFallback>{repository.owner.login.slice(0, 2)}</AvatarFallback>
         </Avatar>
         <div className="flex flex-col gap-2">
-          <BlurText
-            text={repository.name}
-            delay={150}
-            animateBy="words"
-            direction="bottom"
-            className="text-2xl font-bold"
-          />
-          <BlurText
-            text={repository.language ?? ''}
-            delay={150}
-            animateBy="words"
-            direction="bottom"
-            className="text-sm text-gray-500"
-          />
+          <p className="text-2xl font-bold">{repository.name}</p>
+          <p className="text-sm text-gray-500">{repository.language}</p>
         </div>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">

@@ -1,4 +1,3 @@
-import BlurText from '@/components/_ui/BlurText';
 import { Card, CardContent, CardHeader } from '@/components/_ui/card';
 
 type ResultCardProps = Readonly<{
@@ -12,22 +11,10 @@ export default function ResultCard({ title, value, icon }: ResultCardProps) {
     <Card className="col-span-1">
       <CardHeader>
         <CardContent className="flex flex-col items-center gap-2">
-          <BlurText
-            text={title}
-            delay={150}
-            animateBy="words"
-            direction="bottom"
-            className="text-sm text-gray-500"
-          />
+          <p className="text-sm text-gray-500">{title}</p>
           <div className="flex items-center gap-2">
             {icon}
-            <BlurText
-              text={value.toLocaleString()}
-              delay={150}
-              animateBy="words"
-              direction="bottom"
-              className="text-2xl font-bold"
-            />
+            <p className="text-2xl font-bold">{value.toLocaleString()}</p>
           </div>
         </CardContent>
       </CardHeader>

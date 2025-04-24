@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/_ui/avatar';
-import BlurText from '@/components/_ui/BlurText';
 import { Card } from '@/components/_ui/card';
 import { Link } from '@/components/common/link';
 import { type SearchRepositoryResultItemSchema } from '@/schemas/validations/search';
@@ -20,12 +19,7 @@ export default function RepositoryCard({ repository }: RepositoryCardProps) {
           <div className="flex flex-nowrap items-center gap-2">
             <Link href={`/${repository.owner?.login}/${repository.name}`}>
               <h3 className="truncate text-xl font-semibold text-gray-900">
-                <BlurText
-                  text={repository.name}
-                  delay={150}
-                  animateBy="words"
-                  direction="bottom"
-                />
+                {repository.name}
               </h3>
             </Link>
             <a
@@ -38,61 +32,44 @@ export default function RepositoryCard({ repository }: RepositoryCardProps) {
           </div>
           <div className="flex items-center space-x-2 text-gray-500">
             <Star className="h-4 w-4" />
-            <BlurText
-              text={repository.stargazers_count.toLocaleString()}
-              delay={150}
-              animateBy="words"
-              direction="bottom"
-            />
+            <p className="text-gray-500">
+              {repository.stargazers_count.toLocaleString()}
+            </p>
           </div>
         </div>
 
         {repository.description && (
-          <BlurText
-            text={repository.description}
-            delay={70}
-            animateBy="words"
-            direction="bottom"
-            className="line-clamp-2 text-gray-600"
-          />
+          <p className="line-clamp-2 text-gray-600">{repository.description}</p>
         )}
 
         {repository.topics && (
           <div className="flex flex-wrap gap-2">
             {repository.topics.map((topic) => (
-              <BlurText
+              <p
                 key={topic}
-                text={topic}
-                delay={70}
-                animateBy="words"
-                direction="bottom"
                 className="rounded-lg bg-gray-100 px-3 py-1 text-xs text-gray-600"
-              />
+              >
+                {topic}
+              </p>
             ))}
           </div>
         )}
 
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4 text-sm text-gray-500">
-            {repository.language && (
-              <div className="flex items-center space-x-1">
-                <Code className="h-4 w-4" />
-                <BlurText
-                  text={repository.language}
-                  delay={150}
-                  animateBy="words"
-                  direction="bottom"
-                />
-              </div>
-            )}
+            <div className="flex items-center space-x-1">
+              <Code className="h-4 w-4" />
+              {repository.language ? (
+                <p className="text-gray-500">{repository.language}</p>
+              ) : (
+                <p className="text-gray-500">None.</p>
+              )}
+            </div>
             <div className="flex items-center space-x-1">
               <GitBranch className="h-4 w-4" />
-              <BlurText
-                text={repository.forks_count.toLocaleString()}
-                delay={150}
-                animateBy="words"
-                direction="bottom"
-              />
+              <p className="text-gray-500">
+                {repository.forks_count.toLocaleString()}
+              </p>
             </div>
           </div>
           <Avatar className="h-8 w-8">
