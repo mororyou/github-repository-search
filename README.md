@@ -2,7 +2,19 @@
 
 https://github-repository-search-alpha.vercel.app/
 
-> [!TIP]
+> [!Tip]
+> 環境構築手順
+
+```bash
+cp .env.example .env
+cp .env.example .env.test
+
+pnpm i
+
+pnpm start
+```
+
+> [!Tip]
 > 利用した主なパッケージ・ライブラリ
 ### css / ui
 - tailwind css
